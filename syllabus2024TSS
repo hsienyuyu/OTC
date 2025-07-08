@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TSS Syllabus 2024–2025</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 2rem;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .header h2 {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .content-wrapper {
+      padding: 2rem;
+    }
+    
+    .section {
+      margin-bottom: 1.5rem;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .toggle-btn {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem 1.5rem;
+      border: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .toggle-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .toggle-btn:hover::before {
+      left: 100%;
+    }
+    
+    .toggle-btn:hover {
+      background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    }
+    
+    .toggle-btn .icon {
+      margin-right: 0.5rem;
+      font-size: 1.5rem;
+    }
+    
+    .toggle-btn .arrow {
+      margin-left: auto;
+      transition: transform 0.3s ease;
+    }
+    
+    .toggle-btn.active .arrow {
+      transform: rotate(180deg);
+    }
+    
+    .content {
+      display: none;
+      padding: 1.5rem;
+      background: #f8f9fa;
+      border-left: 4px solid #667eea;
+      animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .content.show {
+      display: block;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    th {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      font-weight: 600;
+      text-align: left;
+    }
+    
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid #e9ecef;
+      transition: background-color 0.3s ease;
+    }
+    
+    tr:hover td {
+      background-color: #f8f9fa;
+    }
+    
+    .note {
+      font-style: italic;
+      color: #6c757d;
+      background: #e3f2fd;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      margin-top: 1rem;
+      border-left: 4px solid #2196f3;
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    li {
+      margin-bottom: 0.8rem;
+      padding: 0.5rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    li:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    a:hover {
+      color: #764ba2;
+      text-decoration: underline;
+    }
+    
+    .instructor-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .instructor-card {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .instructor-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .quick-links {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 1000;
+    }
+    
+    .quick-link {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 0.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+    
+    .quick-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      color: white;
+    }
+    
+    .progress-bar {
+      background: #e9ecef;
+      height: 4px;
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    .expand-all {
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .expand-all:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .header h2 {
+        font-size: 1.2rem;
+      }
+      
+      .content-wrapper {
+        padding: 1rem;
+      }
+      
+      .quick-links {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+      
+      .instructor-info {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .last-updated {
+      text-align: center;
+      color: #6c757d;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e9ecef;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>💻 Technology Support Services (TSS)</h1>
+      <h2>2024 – 2025 Syllabus</h2>
+    </div>
+    
+    <div class="content-wrapper">
+      <button class="expand-all" onclick="toggleAllSections()">📖 Expand All Sections</button>
+      
+      <div class="section">
+        <button class="toggle-btn" onclick="toggleContent(this)">
+          <span class="icon">📘</span>
+          <span>Course Overview</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="content">
+          <p>This course provides a broad introduction to computer hardware, software, networking, and programming fundamentals. Students also work with productivity software and learn hands-on technical support skills.</p>
+          
+          <div class="instructor-info">
+            <div class="instructor-card">
+              <h4>Dr. Elizabeth Morgan</h4>
+              <p><a href="mailto:elizabeth.morgan@okaloosaschools.com">elizabeth.morgan@okaloosaschools.com</a></p>
+            </div>
+            <div class="instructor-card">
+              <h4>Mr. Jayson Jay-Peterson</h4>
+              <p><a href="mailto:jayson.jaypeterson@okaloosaschools.com">jayson.jaypeterson@okaloosaschools.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <button class="toggle-btn" onclick="toggleContent(this)">
+          <span class="icon">🧑‍💻</span>
+          <span>Course Resources</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="content">
+          <ul>
+            <li><strong>📚 Classlink:</strong> <a href="https://launchpad.classlink.com/okaloosaschools" target="_blank">launchpad.classlink.com/okaloosaschools</a></li>
+            <li><strong>🧪 TestOut:</strong> <a href="https://www.testout.com" target="_blank">testout.com</a></li>
+            <li><strong>🏫 Google Classroom:</strong> <a href="https://classroom.google.com" target="_blank">classroom.google.com</a></li>
+            <li><strong>📊 MeasureUp:</strong> <a href="https://www.measureup.com" target="_blank">measureup.com</a></li>
+            <li><strong>🏠 OTC Home Page:</strong> <a href="https://www.otcollege.net" target="_blank">otcollege.net</a></li>
+            <li><strong>🎯 CompTIA Test Scheduling:</strong> <a href="https://www.comptia.org/faq/security/where-can-i-get-comptia-security-certified" target="_blank">comptia.org/faq/security/where-can-i-get-comptia-security-certified</a></li>
+          </ul>
+          <div class="note">
+            <strong>Important:</strong> For CompTIA testing, bring 2 forms of ID
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <button class="toggle-btn" onclick="toggleContent(this)">
+          <span class="icon">📅</span>
+          <span>Schedule & Attendance</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="content">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+            <div style="background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+              <h4>📍 Orientation</h4>
+              <p>August 6, 2024<br>4:00–5:00 p.m. CST</p>
+            </div>
+            <div style="background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+              <h4>🕐 Class Meetings</h4>
+              <p>Monday–Thursday<br>5:00–9:15 p.m. CST</p>
+            </div>
+            <div style="background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+              <h4>📆 Program Duration</h4>
+              <p>Aug 7, 2024 – May 29, 2025</p>
+            </div>
+          </div>
+          
+          <div class="note">
+            <strong>⚠️ Attendance Policy:</strong> Students must attend all classes. More than 10% absence may result in withdrawal. There are no excused absences unless administratively approved. Students must sign in/out using the kiosk.
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <button class="toggle-btn" onclick="toggleContent(this)">
+          <span class="icon">📊</span>
+          <span>Grading Policy</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="content">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div>
+              <h4>📈 Grade Scale</h4>
+              <table>
+                <thead>
+                  <tr><th>Letter Grade</th><th>Percentage</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>A</td><td>90–100%</td></tr>
+                  <tr><td>B</td><td>80–89%</td></tr>
+                  <tr><td>C</td><td>70–79%</td></tr>
+                  <tr><td>D</td><td>60–69%</td></tr>
+                  <tr><td>F</td><td>0–59%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div>
+              <h4>⚖️ Assignment Weights</h4>
+              <table>
+                <thead>
+                  <tr><th>Assignment Type</th><th>Weight</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Study Guides</td><td>10%</td></tr>
+                  <tr><td>Projects</td><td>20%</td></tr>
+                  <tr><td>TestOut Modules</td><td>20%</td></tr>
+                  <tr><td>Tests</td><td>30%</td></tr>
+                  <tr><td>CompTIA A+ Exam</td><td>30%</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <button class="toggle-btn" onclick="toggleContent(this)">
+          <span class="icon">📝</span>
+          <span>Assignments & Certification</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="content">
+          <ul>
+            <li><strong>📚 Study Guides:</strong> Completion-based assignments used for review and reinforcement of key concepts.</li>
+            <li><strong>🛠️ Projects:</strong> Hands-on technical tasks with comprehensive documentation requirements.</li>
+            <li><strong>💻 TestOut Modules:</strong> Self-paced learning modules featuring instructional videos, virtual labs, and assessment quizzes.</li>
+            <li><strong>📋 Tests:</strong> Comprehensive end-of-unit examinations covering content from TestOut modules and study guides.</li>
+            <li><strong>🎓 CompTIA A+ Certification:</strong> Credit is awarded for exam registration and participation (pass/fail credit system).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <button class="toggle-btn" onclick="toggleContent(this)">
+          <span class="icon">📥</span>
+          <span>Acknowledgement</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="content">
+          <p>By signing the acknowledgement form, students confirm they have read, understood, and agree to comply with this syllabus and all policies of the TSS program.</p>
+          <div class="note">
+            <strong>📋 Required:</strong> All students must complete and submit the signed acknowledgement form before the end of the first week of classes.
+          </div>
+        </div>
+      </div>
+      
+      <div class="last-updated">
+        <p>Last updated: Academic Year 2024-2025 | For questions, contact your instructors</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quick-links">
+    <a href="https://launchpad.classlink.com/okaloosaschools" target="_blank" class="quick-link">🚀 Classlink</a>
+    <a href="https://www.testout.com" target="_blank" class="quick-link">📚 TestOut</a>
+    <a href="https://classroom.google.com" target="_blank" class="quick-link">🏫 Classroom</a>
+  </div>
+
+  <script>
+    let allExpanded = false;
+    
+    function toggleContent(button) {
+      const content = button.nextElementSibling;
+      const arrow = button.querySelector('.arrow');
+      
+      if (content.classList.contains('show')) {
+        content.classList.remove('show');
+        button.classList.remove('active');
+      } else {
+        content.classList.add('show');
+        button.classList.add('active');
+      }
+    }
+    
+    function toggleAllSections() {
+      const buttons = document.querySelectorAll('.toggle-btn');
+      const contents = document.querySelectorAll('.content');
+      const expandButton = document.querySelector('.expand-all');
+      
+      if (!allExpanded) {
+        contents.forEach(content => content.classList.add('show'));
+        buttons.forEach(button => button.classList.add('active'));
+        expandButton.textContent = '📖 Collapse All Sections';
+        allExpanded = true;
+      } else {
+        contents.forEach(content => content.classList.remove('show'));
+        buttons.forEach(button => button.classList.remove('active'));
+        expandButton.textContent = '📖 Expand All Sections';
+        allExpanded = false;
+      }
+    }
+    
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
